@@ -1,0 +1,23 @@
+services:
+  oracle-itp:
+    image: oracle/database:19.3.0-ee
+    container_name: oracle-itp
+    ports:
+      - "1521:1521"
+    environment:
+      ORACLE_PWD: Oracle@168
+      ENABLE_ARCHIVELOG: true
+    volumes:
+      - oracle_data_itp:/opt/oracle/oradata
+      - ./init_scripts:/opt/oracle/scripts/startup
+      - oracle_recovery_itp:/opt/oracle/oradata/recovery_area  # Add this
+    networks:
+      - itp-net
+
+
+volumes:
+  oracle_data_itp:
+  oracle_recovery_itp:  # Add this volume
+networks:
+  itp-net:
+    external: true

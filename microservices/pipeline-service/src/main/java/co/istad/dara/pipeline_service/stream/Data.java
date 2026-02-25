@@ -1,0 +1,15 @@
+package co.istad.dara.pipeline_service.stream;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+public class Data {
+    private String recid;
+    private String name;
+    private String role;
+}
+
