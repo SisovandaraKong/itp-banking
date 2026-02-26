@@ -5,7 +5,9 @@ import co.istad.dara.customer_service.application.projection.GetCustomerQuery;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
-import org.springframework.data.domain.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,10 +27,6 @@ public class CustomerQueryServiceImpl implements CustomerQueryService {
         getCustomerQuery.setPageNumber(pageNumber);
         getCustomerQuery.setPageSize(pageSize);
 
-        Sort sort = Sort.by(Sort.Direction.ASC, "dob");
-
-        Pageable pageable = PageRequest.of(pageNumber,pageSize,sort);
-
         // - ResponseTypes.multipleInstancesOf() tells Axon we expect a List<CustomerResponse>
         // - .join() blocks and waits for the async result to complete
         List<CustomerResponse> customers = queryGateway
@@ -39,6 +37,6 @@ public class CustomerQueryServiceImpl implements CustomerQueryService {
         // - customers       → the actual data for the current page
         // - PageRequest.of() → holds pageNumber and pageSize metadata
         // - customers.size() → used as total elements count
-        return new PageImpl<>(customers, pageable, customers.size());
+        return new PageImpl<>(customers, PageRequest.of(pageNumber, pageSize), customers.size());
     }
 }
