@@ -16,8 +16,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CustomerQueryServiceImpl implements CustomerQueryService {
 
-    // QueryGateway is the Axon Framework component used to dispatch queries
-    // to their respective query handlers in the application
     private final QueryGateway queryGateway;
 
     @Override
@@ -27,16 +25,10 @@ public class CustomerQueryServiceImpl implements CustomerQueryService {
         getCustomerQuery.setPageNumber(pageNumber);
         getCustomerQuery.setPageSize(pageSize);
 
-        // - ResponseTypes.multipleInstancesOf() tells Axon we expect a List<CustomerResponse>
-        // - .join() blocks and waits for the async result to complete
         List<CustomerResponse> customers = queryGateway
                 .query(getCustomerQuery, ResponseTypes.multipleInstancesOf(CustomerResponse.class))
                 .join();
 
-        // Wrap the result into a Spring PageImpl object:
-        // - customers       → the actual data for the current page
-        // - PageRequest.of() → holds pageNumber and pageSize metadata
-        // - customers.size() → used as total elements count
         return new PageImpl<>(customers, PageRequest.of(pageNumber, pageSize), customers.size());
     }
 }
