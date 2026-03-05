@@ -20,6 +20,4 @@ public record CreateCustomerCommand(
         Contact contact,
         CustomerSegmentId customerSegmentId
 ) {
-
-
 }

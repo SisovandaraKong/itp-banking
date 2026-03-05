@@ -1,4 +1,4 @@
-package co.istad.dara.customer_service.infrastucture.message;
+package co.istad.dara.account_service.rest.message;
 
 
 import lombok.*;

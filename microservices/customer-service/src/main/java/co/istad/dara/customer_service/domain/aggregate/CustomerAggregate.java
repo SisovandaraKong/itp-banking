@@ -81,7 +81,7 @@ public class CustomerAggregate {
     public CustomerId handler(ChangePhoneNumberCommand changePhoneNumberCommand,
                               CustomerRepository customerRepository){
 
-        if (!customerRepository.existsById(changePhoneNumberCommand.customerId().value())){
+        if (!customerRepository.existsById(changePhoneNumberCommand.customerId().getValue())){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Customer's uuid not found");
         }
         if (customerRepository.existsByPhoneNumber(changePhoneNumberCommand.phoneNumber())){

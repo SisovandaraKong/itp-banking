@@ -2,6 +2,7 @@ package co.istad.dara.customer_service.data.entity;
 
 import co.istad.dara.customer_service.domain.valueobject.CustomerSegmentType;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "customer_segments")
 public class CustomerSegmentEntity {

@@ -1,9 +1,8 @@
-package co.istad.dara.customer_service.infrastucture.exception;
+package co.istad.dara.customer_service.rest.exception;
 
 
-import co.istad.dara.customer_service.infrastucture.message.BasedError;
-import co.istad.dara.customer_service.infrastucture.message.BasedErrorResponse;
-import org.springframework.http.HttpStatus;
+import co.istad.dara.customer_service.rest.message.BasedError;
+import co.istad.dara.customer_service.rest.message.BasedErrorResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

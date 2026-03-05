@@ -37,7 +37,7 @@ public class CustomerServiceImpl implements CustomerService{
 //        commandGateway.sendAndWait(changePhoneNumberCommand); // ← don't capture result, it's void
 
         return ChangePhoneNumberResponse.builder()
-                .customerId(result.value())
+                .customerId(result.getValue())
                 .phoneNumber(changePhoneNumberCommand.phoneNumber())
                 .message("Phone number changed successfully")
                 .build();
@@ -56,7 +56,7 @@ public class CustomerServiceImpl implements CustomerService{
         log.info("CommandGateway Result: {}", result);
 
         return CreateCustomerResponse.builder()
-                .customerId(createCustomerCommand.customerId().value())
+                .customerId(createCustomerCommand.customerId().getValue())
                 .message("Customer saved successfully")
                 .build();
     }

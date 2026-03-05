@@ -1,5 +1,6 @@
 package co.istad.dara.customer_service.application.projection;
 
+import co.istad.dara.common.dto.PageResponse;
 import co.istad.dara.customer_service.application.dto.query.CustomerResponse;
 import co.istad.dara.customer_service.application.mapper.CustomerApplicationMapper;
 import co.istad.dara.customer_service.data.entity.CustomerEntity;
@@ -24,17 +25,32 @@ public class CustomerQueryHandler {
     private final CustomerApplicationMapper customerApplicationMapper;
 
     @QueryHandler
-    public Page<CustomerResponse> handle(GetCustomerQuery getCustomerQuery){
+    public PageResponse handle(GetCustomerQuery getCustomerQuery) {
 
         Pageable pageable = PageRequest.of(
                 getCustomerQuery.getPageNumber(),
                 getCustomerQuery.getPageSize(),
-                Sort.by(Sort.Direction.ASC, "dob")
+                Sort.by(Sort.Direction.DESC, "dob")
         );
 
-        Page<CustomerEntity> customers = customerRepository.findAll(pageable);
+        Page<CustomerEntity> customerEntityPage = customerRepository.findAll(pageable);
 
-        return customers
-                .map(customerApplicationMapper::customerEntityToCustomerResponse);
+        List<CustomerResponse> customers = customerEntityPage.getContent().stream()
+                .map(customerApplicationMapper::customerEntityToCustomerResponse)
+                .toList();
+
+        return new PageResponse(
+                customers,
+                customerEntityPage.getTotalPages(),
+                customerEntityPage.getSize(),
+                customerEntityPage.getTotalElements(),
+                customerEntityPage.getNumber()
+        );
     }
+    @QueryHandler
+    public CustomerResponse handle(GetCustomerByIdQuery getCustomerByIdQuery){
+        CustomerEntity customer = customerRepository.findById(getCustomerByIdQuery.customerId()).orElse(null);
+        return customerApplicationMapper.customerEntityToCustomerResponse(customer);
+    }
+
 }
