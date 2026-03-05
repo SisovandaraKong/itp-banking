@@ -2,6 +2,9 @@ package co.istad.dara.account_service.domain.interceptor;
 
 import co.istad.dara.account_service.application.dto.client.CustomerResponse;
 import co.istad.dara.account_service.domain.command.CreateAccountCommand;
+import co.istad.dara.account_service.domain.command.DepositMoneyCommand;
+import co.istad.dara.account_service.domain.command.FreezeAccountCommand;
+import co.istad.dara.account_service.domain.command.WithdrawMoneyCommand;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.commandhandling.CommandMessage;
 import org.axonframework.commandhandling.GenericCommandMessage;
@@ -22,32 +25,68 @@ public class MyCommandDispatchInterceptor implements MessageDispatchInterceptor<
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MyCommandDispatchInterceptor.class);
     private final WebClient.Builder webClientBuilder;
-
     @Override
-    public BiFunction<Integer, CommandMessage<?>, CommandMessage<?>> handle(List<? extends CommandMessage<?>> messages) {
-        return (index, command) -> {
-            CreateAccountCommand createAccountCommand = (CreateAccountCommand) command.getPayload();
-            WebClient webClient =  webClientBuilder.baseUrl("lb://customer").build();
-            CustomerResponse customerResponse = webClient.get()
-                    .uri("/api/customers/{customerId}", createAccountCommand.customerId().getValue())
-                    .retrieve().bodyToMono(CustomerResponse.class).block();
-            if(customerResponse != null){
-                LOGGER.info("Dispatching a command {}.", createAccountCommand);
-                LOGGER.info("Customer : {}", customerResponse);
-                return new GenericCommandMessage<>(
-                        new CreateAccountCommand(
-                                createAccountCommand.accountId(),
-                                createAccountCommand.accountNumber(),
-                                createAccountCommand.accountHolder(),
-                                createAccountCommand.customerId(),
-                                createAccountCommand.accountTypeCode(),
-                                createAccountCommand.branchId(),
-                                createAccountCommand.initialBalance()
-                        )
-                );
-            }
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Customer id not found");
+    public BiFunction<Integer, CommandMessage<?>, CommandMessage<?>> handle(
+            List<? extends CommandMessage<?>> messages) {
 
+        return (index, command) -> {
+            Object payload = command.getPayload();
+
+            if (payload instanceof CreateAccountCommand createAccountCommand) {
+                CustomerResponse customerResponse = fetchCustomer(
+                        createAccountCommand.customerId().toString()
+                );
+                if (customerResponse != null) {
+                    LOGGER.info("Dispatching CreateAccountCommand: {}", createAccountCommand);
+                    return command; // no need to rebuild, just pass it through
+                }
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer id not found");
+            }
+
+            if (payload instanceof DepositMoneyCommand depositMoneyCommand) {
+                CustomerResponse customerResponse = fetchCustomer(
+                        depositMoneyCommand.customerId().toString()
+                );
+                if (customerResponse != null) {
+                    LOGGER.info("Dispatching DepositMoneyCommand: {}", depositMoneyCommand);
+                    return command; // pass through as-is
+                }
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer id not found");
+            }
+
+            if (payload instanceof WithdrawMoneyCommand withdrawMoneyCommand) {
+                CustomerResponse customerResponse = fetchCustomer(
+                        withdrawMoneyCommand.customerId().toString()
+                );
+                if (customerResponse != null) {
+                    LOGGER.info("Dispatching WithdrawMoneyCommand: {}", withdrawMoneyCommand);
+                    return command; // pass through as-is
+                }
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer id not found");
+            }
+
+            if (payload instanceof FreezeAccountCommand freezeAccountCommand) {
+                CustomerResponse customerResponse = fetchCustomer(
+                        freezeAccountCommand.customerId().toString()
+                );
+                if (customerResponse != null) {
+                    LOGGER.info("Dispatching FreezeAccountCommand: {}", freezeAccountCommand);
+                    return command; // pass through as-is
+                }
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer id not found");
+            }
+
+            return command; // pass through unrecognized commands untouched
         };
+    }
+
+    // Extract reusable WebClient call
+    private CustomerResponse fetchCustomer(String customerId) {
+        return webClientBuilder.baseUrl("lb://customer").build()
+                .get()
+                .uri("/api/customers/{customerId}", customerId)
+                .retrieve()
+                .bodyToMono(CustomerResponse.class)
+                .block();
     }
 }

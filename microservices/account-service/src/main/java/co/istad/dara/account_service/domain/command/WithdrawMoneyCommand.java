@@ -7,8 +7,10 @@ import co.istad.dara.common.domain.valueobject.TransactionId;
 import lombok.Builder;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
+import java.time.ZonedDateTime;
+
 @Builder
-public record DepositMoneyCommand(
+public record WithdrawMoneyCommand(
         @TargetAggregateIdentifier
         AccountId accountId,
         CustomerId customerId,
@@ -16,5 +18,4 @@ public record DepositMoneyCommand(
         Money amount,
         String remark
 ) {
-
 }

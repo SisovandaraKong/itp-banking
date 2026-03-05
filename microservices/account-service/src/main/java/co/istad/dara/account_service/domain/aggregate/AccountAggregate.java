@@ -2,8 +2,12 @@ package co.istad.dara.account_service.domain.aggregate;
 
 import co.istad.dara.account_service.domain.command.CreateAccountCommand;
 import co.istad.dara.account_service.domain.command.DepositMoneyCommand;
+import co.istad.dara.account_service.domain.command.FreezeAccountCommand;
+import co.istad.dara.account_service.domain.command.WithdrawMoneyCommand;
 import co.istad.dara.account_service.domain.event.AccountCreatedEvent;
+import co.istad.dara.account_service.domain.event.AccountFrozenEvent;
 import co.istad.dara.account_service.domain.event.MoneyDepositedEvent;
+import co.istad.dara.account_service.domain.event.MoneyWithdrawnEvent;
 import co.istad.dara.account_service.domain.exception.AccountException;
 import co.istad.dara.account_service.domain.validate.AccountValidate;
 import co.istad.dara.account_service.domain.valueobject.AccountStatus;
@@ -22,6 +26,7 @@ import org.axonframework.spring.stereotype.Aggregate;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
+import java.util.UUID;
 
 @Aggregate
 @NoArgsConstructor
@@ -35,10 +40,12 @@ public class AccountAggregate {
     String accountNumber;
     String accountHolder;
     CustomerId customerId;
+    TransactionId transactionId;
     AccountTypeCode accountTypeCode;
     BranchId branchId;
     Money balance;
     AccountStatus accountStatus;
+    String remark;
     ZonedDateTime createdAt;
     String createdBy;
     ZonedDateTime updatedAt;
@@ -83,7 +90,6 @@ public class AccountAggregate {
                 .branchId(createAccountCommand.branchId())
                 .initialBalance(createAccountCommand.initialBalance())
                 .build();
-
         AggregateLifecycle.apply(accountCreatedEvent);
     }
 
@@ -105,11 +111,87 @@ public class AccountAggregate {
     public AccountId handler(DepositMoneyCommand depositMoneyCommand){
         log.info("DepositMoneyCommand: {}", depositMoneyCommand);
 
+        Money totalMoney = balance.deposit(depositMoneyCommand.amount());
+
         MoneyDepositedEvent moneyDepositedEvent = MoneyDepositedEvent.builder()
                 .accountId(depositMoneyCommand.accountId())
+                .customerId(depositMoneyCommand.customerId())
+                .transactionId(depositMoneyCommand.transactionId())
+                .amount(this.balance)
+                .newBalance(totalMoney)
+                .remark(depositMoneyCommand.remark())
+                .createdAt(ZonedDateTime.now())
                 .build();
+        AggregateLifecycle.apply(moneyDepositedEvent);
 
         return this.accountId;
     }
 
+    @EventHandler
+    public void on(MoneyDepositedEvent moneyDepositedEvent){
+        this.accountId = moneyDepositedEvent.accountId();
+        this.customerId = moneyDepositedEvent.customerId();
+        this.transactionId = moneyDepositedEvent.transactionId();
+        this.balance = moneyDepositedEvent.newBalance();
+        this.remark = moneyDepositedEvent.remark();
+        this.createdAt = moneyDepositedEvent.createdAt();
+    }
+
+    @CommandHandler
+    public AccountId handler(WithdrawMoneyCommand withdrawMoneyCommand){
+        log.info("on MoneyWithdrawnEvent: {}", withdrawMoneyCommand);
+
+        Money totalMoney = balance.withdraw(withdrawMoneyCommand.amount());
+
+        MoneyWithdrawnEvent withdrawnEvent = MoneyWithdrawnEvent.builder()
+                .accountId(withdrawMoneyCommand.accountId())
+                .customerId(withdrawMoneyCommand.customerId())
+                .transactionId(withdrawMoneyCommand.transactionId())
+                .amount(this.balance)
+                .newBalance(totalMoney)
+                .remark(withdrawMoneyCommand.remark())
+                .createdAt(ZonedDateTime.now())
+                .build();
+        AggregateLifecycle.apply(withdrawnEvent);
+
+        return this.accountId;
+    }
+
+    @EventHandler
+    public void on(MoneyWithdrawnEvent moneyWithdrawnEvent){
+        this.accountId = moneyWithdrawnEvent.accountId();
+        this.customerId = moneyWithdrawnEvent.customerId();
+        this.transactionId = moneyWithdrawnEvent.transactionId();
+        this.balance = moneyWithdrawnEvent.newBalance();
+        this.remark = moneyWithdrawnEvent.remark();
+        this.createdAt = moneyWithdrawnEvent.createdAt();
+    }
+
+    @CommandHandler
+    public AccountId handler(FreezeAccountCommand freezeAccountCommand){
+        log.info("FreezeAccountCommand: {}", freezeAccountCommand);
+
+        AccountFrozenEvent accountFrozenEvent = AccountFrozenEvent.builder()
+                .accountId(freezeAccountCommand.accountId())
+                .customerId(freezeAccountCommand.customerId())
+                .previousStatus(this.accountStatus)
+                .newStatus(AccountStatus.FREEZE)
+                .reason(freezeAccountCommand.remark())
+                .requestBy(freezeAccountCommand.requestBy())
+                .createdAt(ZonedDateTime.now())
+                .build();
+        AggregateLifecycle.apply(accountFrozenEvent);
+
+        return this.accountId;
+    }
+
+    @EventHandler
+    public void on(AccountFrozenEvent accountFrozenEvent){
+        this.accountId = accountFrozenEvent.accountId();
+        this.customerId = accountFrozenEvent.customerId();
+        this.accountStatus = accountFrozenEvent.newStatus();
+        this.remark = accountFrozenEvent.reason();
+        this.updatedAt = accountFrozenEvent.createdAt();
+        this.updatedBy = accountFrozenEvent.requestBy();
+    }
 }
