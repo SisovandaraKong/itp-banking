@@ -1,7 +1,7 @@
 package co.istad.dara.account_service.data.repository;
 
 import co.istad.dara.account_service.data.entity.AccountTypeEntity;
-import co.istad.dara.account_service.domain.valueobject.AccountTypeCode;
+import co.istad.dara.common.domain.valueobject.AccountTypeCode;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

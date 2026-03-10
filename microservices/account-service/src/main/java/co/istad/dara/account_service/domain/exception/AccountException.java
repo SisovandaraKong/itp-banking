@@ -1,6 +1,6 @@
 package co.istad.dara.account_service.domain.exception;
 
-import co.istad.dara.common.exception.DomainException;
+import co.istad.dara.common.domain.exception.DomainException;
 
 public class AccountException extends DomainException {
 

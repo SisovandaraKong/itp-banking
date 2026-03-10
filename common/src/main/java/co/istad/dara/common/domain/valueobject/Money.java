@@ -1,7 +1,7 @@
 package co.istad.dara.common.domain.valueobject;
 
 
-import co.istad.dara.common.exception.DomainException;
+import co.istad.dara.common.domain.exception.DomainException;
 
 import java.math.BigDecimal;
 

@@ -1,6 +1,6 @@
 package co.istad.dara.account_service.data.entity;
 
-import co.istad.dara.account_service.domain.valueobject.AccountStatus;
+import co.istad.dara.common.domain.valueobject.AccountStatus;
 import co.istad.dara.common.domain.valueobject.Money;
 import jakarta.persistence.*;
 import lombok.Getter;

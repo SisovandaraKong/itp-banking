@@ -2,7 +2,7 @@ package co.istad.dara.account_service.data.init;
 
 import co.istad.dara.account_service.data.entity.AccountTypeEntity;
 import co.istad.dara.account_service.data.repository.AccountTypeRepository;
-import co.istad.dara.account_service.domain.valueobject.AccountTypeCode;
+import co.istad.dara.common.domain.valueobject.AccountTypeCode;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

@@ -1,6 +1,6 @@
 package co.istad.dara.account_service.data.entity;
 
-import co.istad.dara.account_service.domain.valueobject.AccountTypeCode;
+import co.istad.dara.common.domain.valueobject.AccountTypeCode;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

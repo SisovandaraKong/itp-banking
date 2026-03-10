@@ -13,5 +13,4 @@ public interface CustomerQueryService {
         PageResponse getAllCustomers(int pageNumber, int pageSize);
 
         CustomerResponse getCustomerById(UUID customerId);
-
-}
+}                                  

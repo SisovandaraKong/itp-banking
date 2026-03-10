@@ -1,6 +1,6 @@
 package co.istad.dara.account_service.domain.event;
 
-import co.istad.dara.account_service.domain.valueobject.AccountStatus;
+import co.istad.dara.common.domain.valueobject.AccountStatus;
 import co.istad.dara.common.domain.valueobject.AccountId;
 import co.istad.dara.common.domain.valueobject.CustomerId;
 import lombok.Builder;

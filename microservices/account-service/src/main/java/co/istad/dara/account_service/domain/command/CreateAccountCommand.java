@@ -1,6 +1,6 @@
 package co.istad.dara.account_service.domain.command;
 
-import co.istad.dara.account_service.domain.valueobject.AccountTypeCode;
+import co.istad.dara.common.domain.valueobject.AccountTypeCode;
 import co.istad.dara.common.domain.valueobject.Money;
 import co.istad.dara.common.domain.valueobject.AccountId;
 import co.istad.dara.common.domain.valueobject.BranchId;

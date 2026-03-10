@@ -3,7 +3,7 @@ package co.istad.dara.account_service.application.mapper;
 import co.istad.dara.account_service.application.dto.create.CreateAccountRequest;
 import co.istad.dara.account_service.data.entity.AccountEntity;
 import co.istad.dara.account_service.domain.command.CreateAccountCommand;
-import co.istad.dara.account_service.domain.event.AccountCreatedEvent;
+import co.istad.dara.common.domain.event.AccountCreatedEvent;
 import co.istad.dara.common.domain.valueobject.AccountId;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

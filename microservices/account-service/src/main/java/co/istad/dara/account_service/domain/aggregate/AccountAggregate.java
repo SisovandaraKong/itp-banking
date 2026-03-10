@@ -4,21 +4,21 @@ import co.istad.dara.account_service.domain.command.CreateAccountCommand;
 import co.istad.dara.account_service.domain.command.DepositMoneyCommand;
 import co.istad.dara.account_service.domain.command.FreezeAccountCommand;
 import co.istad.dara.account_service.domain.command.WithdrawMoneyCommand;
-import co.istad.dara.account_service.domain.event.AccountCreatedEvent;
+import co.istad.dara.common.domain.event.AccountCreatedEvent;
 import co.istad.dara.account_service.domain.event.AccountFrozenEvent;
 import co.istad.dara.account_service.domain.event.MoneyDepositedEvent;
 import co.istad.dara.account_service.domain.event.MoneyWithdrawnEvent;
 import co.istad.dara.account_service.domain.exception.AccountException;
 import co.istad.dara.account_service.domain.validate.AccountValidate;
-import co.istad.dara.account_service.domain.valueobject.AccountStatus;
-import co.istad.dara.account_service.domain.valueobject.AccountTypeCode;
+import co.istad.dara.common.domain.valueobject.AccountStatus;
+import co.istad.dara.common.domain.valueobject.AccountTypeCode;
 import co.istad.dara.common.domain.valueobject.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandHandler;
-import org.axonframework.eventhandling.EventHandler;
+import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
@@ -26,7 +26,6 @@ import org.axonframework.spring.stereotype.Aggregate;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
-import java.util.UUID;
 
 @Aggregate
 @NoArgsConstructor
@@ -64,6 +63,15 @@ public class AccountAggregate {
         }
     }
 
+    void validateAccountStatus(AccountStatus accountStatus){
+        if (accountStatus != this.accountStatus){
+            throw new AccountException("Account is invalid");
+        }
+        if (!accountStatus.equals(AccountStatus.ACTIVE)){
+            throw new AccountException("Account status need to be active");
+        }
+    }
+
     @CommandHandler
     public AccountAggregate(CreateAccountCommand createAccountCommand){
         log.info("Aggregate on create account command: {}",createAccountCommand);
@@ -90,10 +98,10 @@ public class AccountAggregate {
                 .branchId(createAccountCommand.branchId())
                 .initialBalance(createAccountCommand.initialBalance())
                 .build();
-        AggregateLifecycle.apply(accountCreatedEvent);
+        AggregateLifecycle.apply(accountCreatedEvent); // Store event in event store
     }
 
-    @EventHandler
+    @EventSourcingHandler // Use this for update aggregate state only in memory
     public void on(AccountCreatedEvent accountCreatedEvent){
         this.accountId = accountCreatedEvent.accountId();
         this.accountHolder = accountCreatedEvent.accountHolder();
@@ -111,6 +119,8 @@ public class AccountAggregate {
     public AccountId handler(DepositMoneyCommand depositMoneyCommand){
         log.info("DepositMoneyCommand: {}", depositMoneyCommand);
 
+        validateAccountStatus(this.accountStatus);
+
         Money totalMoney = balance.deposit(depositMoneyCommand.amount());
 
         MoneyDepositedEvent moneyDepositedEvent = MoneyDepositedEvent.builder()
@@ -127,7 +137,7 @@ public class AccountAggregate {
         return this.accountId;
     }
 
-    @EventHandler
+    @EventSourcingHandler
     public void on(MoneyDepositedEvent moneyDepositedEvent){
         this.accountId = moneyDepositedEvent.accountId();
         this.customerId = moneyDepositedEvent.customerId();
@@ -140,6 +150,8 @@ public class AccountAggregate {
     @CommandHandler
     public AccountId handler(WithdrawMoneyCommand withdrawMoneyCommand){
         log.info("on MoneyWithdrawnEvent: {}", withdrawMoneyCommand);
+
+        validateAccountStatus(this.accountStatus);
 
         Money totalMoney = balance.withdraw(withdrawMoneyCommand.amount());
 
@@ -157,7 +169,7 @@ public class AccountAggregate {
         return this.accountId;
     }
 
-    @EventHandler
+    @EventSourcingHandler
     public void on(MoneyWithdrawnEvent moneyWithdrawnEvent){
         this.accountId = moneyWithdrawnEvent.accountId();
         this.customerId = moneyWithdrawnEvent.customerId();
@@ -185,7 +197,7 @@ public class AccountAggregate {
         return this.accountId;
     }
 
-    @EventHandler
+    @EventSourcingHandler
     public void on(AccountFrozenEvent accountFrozenEvent){
         this.accountId = accountFrozenEvent.accountId();
         this.customerId = accountFrozenEvent.customerId();

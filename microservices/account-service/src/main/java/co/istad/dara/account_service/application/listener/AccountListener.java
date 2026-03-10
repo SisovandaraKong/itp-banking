@@ -6,11 +6,10 @@ import co.istad.dara.account_service.data.entity.AccountTypeEntity;
 import co.istad.dara.account_service.data.repository.AccountRepository;
 import co.istad.dara.account_service.data.repository.AccountTypeRepository;
 import co.istad.dara.account_service.data.repository.BranchRepository;
-import co.istad.dara.account_service.domain.event.AccountCreatedEvent;
+import co.istad.dara.common.domain.event.AccountCreatedEvent;
 import co.istad.dara.account_service.domain.event.AccountFrozenEvent;
 import co.istad.dara.account_service.domain.event.MoneyDepositedEvent;
 import co.istad.dara.account_service.domain.event.MoneyWithdrawnEvent;
-import co.istad.dara.account_service.domain.valueobject.AccountStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.config.ProcessingGroup;
@@ -18,8 +17,6 @@ import org.axonframework.eventhandling.EventHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
-
-import java.time.ZonedDateTime;
 
 @Component
 @RequiredArgsConstructor
@@ -31,7 +28,7 @@ public class AccountListener {
     private final BranchRepository branchRepository;
     private final AccountApplicationMapper accountApplicationMapper;
 
-    @EventHandler
+    @EventHandler // Use this to read event happened and update database
     public void on(AccountCreatedEvent accountCreatedEvent){
         log.info("on AccountCreatedEvent: {}", accountCreatedEvent);
 
