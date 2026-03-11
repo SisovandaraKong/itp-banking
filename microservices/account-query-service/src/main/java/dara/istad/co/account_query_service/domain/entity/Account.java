@@ -1,6 +1,7 @@
 package dara.istad.co.account_query_service.domain.entity;
 
 import co.istad.dara.common.domain.valueobject.AccountStatus;
+import co.istad.dara.common.domain.valueobject.AccountTypeCode;
 import co.istad.dara.common.domain.valueobject.Currency;
 import co.istad.dara.common.domain.valueobject.Money;
 import lombok.Getter;
@@ -24,7 +25,7 @@ public class Account {
 
     private Money money;
 
-    private UUID accountTypeId;
+    private AccountTypeCode accountTypeCode;
     private AccountStatus accountStatus;
 
     private ZonedDateTime createdAt;

@@ -15,5 +15,6 @@ public interface AccountAppDataMapper {
     @Mapping(source = "customerId.value", target = "customerId")
     @Mapping(source = "branchId.value", target = "branchId")
     @Mapping(source = "initialBalance", target = "money")
+    @Mapping(source = "accountTypeCode", target = "accountTypeCode")
     Account accountCreatedEventToAccount(AccountCreatedEvent accountCreatedEvent);
 }

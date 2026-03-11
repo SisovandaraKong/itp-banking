@@ -5,95 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a00bb1b-5209-4332-b948-2c5ff7d67d7b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/diff-generator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpa.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpb-settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/microservices/account-query-service/itp-ebanking.microservices.account-query-service.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/applicationservie/AccountMessageListenerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/applicationservie/AccountQueryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/applicationservie/dto/AccountQueryResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/applicationservie/mapper/AccountAppDataMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/applicationservie/ports/input/message/listener/AccountMessageListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/applicationservie/ports/input/service/AccountQueryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/applicationservie/ports/output/repository/AccountQueryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/dataaccess/adapter/AccountQueryRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/dataaccess/entity/AccountEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/dataaccess/entity/AccountTypeEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/dataaccess/entity/BranchEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/dataaccess/entity/CustomerEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/dataaccess/mapper/AccountDataAccessMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/dataaccess/repository/AccountReactiveRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/dataaccess/repository/AccountTypeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/dataaccess/repository/BranchRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/domain/entity/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/message/config/AxonKafkaConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/message/listener/axonkafka/AccountAxonKafkaListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/rest/AccountQueryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/resources/db/changelog/data/changelog-0001.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/resources/db/changelog/db.changelog-master.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/resources/db/changelog/ddl/changelog-0001.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/resources/db/changelog/ddl/changelog-0002.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/application/message/AxonKafkaConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/9.0.0/checksums/checksums.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/9.0.0/checksums/md5-checksums.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/9.0.0/checksums/sha1-checksums.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/9.0.0/executionHistory/executionHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/9.0.0/executionHistory/executionHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/9.0.0/fileChanges/last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/9.0.0/fileHashes/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/9.0.0/fileHashes/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/9.0.0/fileHashes/resourceHashesCache.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/9.0.0/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilotDiffState.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/db-forest-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/db-forest-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/itp-ebanking.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/microservices/pipeline-service/itp-ebanking.microservices.pipeline-service.main.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/spring-cloud/front-bff/itp-ebanking.spring-cloud.front-bff.main.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/spring-cloud/gateway-server/itp-ebanking.spring-cloud.gateway-server.main.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/co/istad/dara/common/domain/valueobject/Money.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/co/istad/dara/common/domain/valueobject/Money.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/co/istad/dara/common/exception/DomainException.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/co/istad/dara/common/domain/exception/DomainException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deployment/itp-postgres/init_scripts/pg_itp_micro_init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/deployment/itp-postgres/init_scripts/pg_itp_micro_init.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/account-service/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/account-service/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/application/dto/create/CreateAccountRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/application/dto/create/CreateAccountRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/application/dto/update/FreezeAccountRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/application/dto/update/FreezeAccountRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/application/dto/update/FreezeAccountResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/application/dto/update/FreezeAccountResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/application/listener/AccountListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/application/listener/AccountListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/application/mapper/AccountApplicationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/application/mapper/AccountApplicationMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/data/entity/AccountEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/data/entity/AccountEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/data/entity/AccountTypeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/data/entity/AccountTypeEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/data/init/AccountTypeInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/data/init/AccountTypeInit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/data/repository/AccountTypeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/data/repository/AccountTypeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/domain/aggregate/AccountAggregate.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/domain/aggregate/AccountAggregate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/domain/command/CreateAccountCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/domain/command/CreateAccountCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/domain/event/AccountCreatedEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/co/istad/dara/common/domain/event/AccountCreatedEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/domain/event/AccountFrozenEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/domain/event/AccountFrozenEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/domain/exception/AccountException.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/domain/exception/AccountException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/domain/exception/DomainExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/domain/exception/DomainExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/domain/valueobject/AccountStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/co/istad/dara/common/domain/valueobject/AccountStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/account-service/src/main/java/co/istad/dara/account_service/domain/valueobject/AccountTypeCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/co/istad/dara/common/domain/valueobject/AccountTypeCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/account-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/account-service/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/customer-service/src/main/java/co/istad/dara/customer_service/application/CustomerQueryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/customer-service/src/main/java/co/istad/dara/customer_service/application/CustomerQueryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/customer-service/src/main/java/co/istad/dara/customer_service/application/listener/CustomerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/customer-service/src/main/java/co/istad/dara/customer_service/application/listener/CustomerProjection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/pipeline-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/pipeline-service/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6fcda845-6fa4-4254-a844-6fc7e388d019.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6fcda845-6fa4-4254-a844-6fc7e388d019.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6fcda845-6fa4-4254-a844-6fc7e388d019/storage_v2/_src_/database/db_account_query.NRrPNA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6fcda845-6fa4-4254-a844-6fc7e388d019/storage_v2/_src_/database/db_account_query.NRrPNA/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/applicationservie/AccountMessageListenerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/applicationservie/AccountMessageListenerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/applicationservie/mapper/AccountAppDataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/applicationservie/mapper/AccountAppDataMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/dataaccess/adapter/AccountQueryRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/dataaccess/adapter/AccountQueryRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/dataaccess/entity/AccountEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/dataaccess/entity/AccountEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/dataaccess/mapper/AccountDataAccessMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/dataaccess/mapper/AccountDataAccessMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/domain/entity/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/account-query-service/src/main/java/dara/istad/co/account_query_service/domain/entity/Account.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +149,7 @@
           <value>
             <map>
               <entry key="AccountQueryServiceApplication" value="STOPPED" />
-              <entry key="AccountServiceApplication" value="FAILED" />
+              <entry key="AccountServiceApplication" value="STOPPED" />
               <entry key="ConfigserverApplication" value="STOPPED" />
               <entry key="CustomerServiceApplication" value="STOPPED" />
               <entry key="EurekaserverApplication" value="STOPPED" />
@@ -374,7 +296,9 @@
       <workItem from="1773038849009" duration="13000" />
       <workItem from="1773105881590" duration="9915000" />
       <workItem from="1773136384699" duration="13264000" />
-      <workItem from="1773153042451" duration="3599000" />
+      <workItem from="1773153042451" duration="3919000" />
+      <workItem from="1773157138251" duration="79000" />
+      <workItem from="1773193286843" duration="4886000" />
     </task>
     <servers />
   </component>

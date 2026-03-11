@@ -7,8 +7,6 @@ import dara.istad.co.account_query_service.applicationservie.ports.output.reposi
 import dara.istad.co.account_query_service.domain.entity.Account;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.axonframework.config.ProcessingGroup;
-import org.axonframework.eventhandling.EventHandler;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -24,6 +22,8 @@ public class AccountMessageListenerImpl implements AccountMessageListener {
         Account account = accountAppDataMapper.accountCreatedEventToAccount(accountCreatedEvent);
 
         accountQueryRepository.save(account)
-                .doOnSuccess(data -> log.info("Saved account = {} successfully", accountCreatedEvent.accountId()));
+                .doOnSuccess(data -> log.info("Saved account = {} successfully", accountCreatedEvent.accountId()))
+                .doOnError(error -> log.error("Failed to save account = {}, error: {}", accountCreatedEvent.accountId(), error.getMessage()))
+                .subscribe();
     }
 }
