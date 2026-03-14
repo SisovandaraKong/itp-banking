@@ -1,4 +1,4 @@
-package co.istad.dara.account_service.domain.config;
+package co.istad.dara.account_service.applicationservice.webClientConfig;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

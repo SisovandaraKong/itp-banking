@@ -1,6 +1,5 @@
 package co.istad.dara.account_service;
 
-import dara.istad.co.account_query_service.DataSourceProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

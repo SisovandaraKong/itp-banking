@@ -1,4 +1,4 @@
-package co.istad.dara.account_service.domain.interceptor;
+package co.istad.dara.account_service.applicationservice.ports.input.interceptor;
 
 import co.istad.dara.account_service.applicationservice.dto.client.CustomerResponse;
 import co.istad.dara.account_service.domain.command.CreateAccountCommand;
