@@ -1,10 +1,9 @@
 package co.istad.dara.account_service.rest;
 
-import co.istad.dara.account_service.application.AccountService;
-import co.istad.dara.account_service.application.dto.create.CreateAccountRequest;
-import co.istad.dara.account_service.application.dto.create.CreateAccountResponse;
-import co.istad.dara.account_service.application.dto.update.*;
-import co.istad.dara.common.domain.valueobject.AccountId;
+import co.istad.dara.account_service.applicationservice.ports.input.service.AccountService;
+import co.istad.dara.account_service.applicationservice.dto.create.CreateAccountRequest;
+import co.istad.dara.account_service.applicationservice.dto.create.CreateAccountResponse;
+import co.istad.dara.account_service.applicationservice.dto.update.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -23,7 +23,8 @@ public class CustomerQueryServiceImpl implements CustomerQueryService {
 
     @Override
     public List<?> getCustomerHistory(UUID customerId) {
-        return eventStore.readEvents(customerId.toString()).asStream()
+        return eventStore.readEvents(customerId.toString())
+                .asStream()
                 .map(Message::getPayload)
                 .toList();
     }
@@ -43,6 +44,8 @@ public class CustomerQueryServiceImpl implements CustomerQueryService {
     @Override
     public CustomerResponse getCustomerById(UUID customerId) {
         GetCustomerByIdQuery getCustomerByIdQuery = new GetCustomerByIdQuery(customerId);
-        return queryGateway.query(getCustomerByIdQuery, ResponseTypes.instanceOf(CustomerResponse.class)).join();
+        return queryGateway
+                .query(getCustomerByIdQuery, ResponseTypes.instanceOf(CustomerResponse.class))
+                .join();
     }
 }

@@ -30,7 +30,7 @@ public class CustomerQueryHandler {
         Pageable pageable = PageRequest.of(
                 getCustomerQuery.getPageNumber(),
                 getCustomerQuery.getPageSize(),
-                Sort.by(Sort.Direction.DESC, "dob")
+                Sort.by(Sort.Direction.ASC, "dob")
         );
 
         Page<CustomerEntity> customerEntityPage = customerRepository.findAll(pageable);

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="PersistenceUnitSettings">
     <persistence-units>
-      <persistence-unit moduleName="itp-ebanking.microservices.account-service.main" name="itp-ebanking.microservices.account-query-service.main" framework="JPA" ormUnit="itp-ebanking.microservices.account-service.main:itp-ebanking.microservices.account-service.main" />
+      <persistence-unit moduleName="itp-ebanking.microservices.account-service.main" name="itp-ebanking.microservices.account-service.main" framework="JPA" ormUnit="itp-ebanking.microservices.account-service.main:itp-ebanking.microservices.account-service.main" />
     </persistence-units>
   </component>
 </project>

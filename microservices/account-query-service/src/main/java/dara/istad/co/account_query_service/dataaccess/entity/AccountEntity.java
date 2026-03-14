@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
+import org.springframework.data.annotation.Version;
 import org.springframework.data.domain.Persistable;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -19,7 +20,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-// FIX: Implements Persistable<UUID> so that Spring Data R2DBC can correctly
+// Implements Persistable<UUID> so that Spring Data R2DBC can correctly
 // determine whether to issue an INSERT or UPDATE when save() is called.
 // Without this, R2DBC checks if @Id is null to decide — but since accountId
 // is always pre-set from the Kafka event (never null), it would always do an
@@ -67,4 +68,8 @@ public class AccountEntity implements Persistable<UUID> {
     private String createdBy;
     private ZonedDateTime updatedAt;
     private String updatedBy;
+
+    // We can use this as well for save as version not use persistable
+//    @Version
+//    private Long version;
 }

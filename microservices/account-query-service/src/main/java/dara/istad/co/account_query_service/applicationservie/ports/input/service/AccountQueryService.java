@@ -8,5 +8,4 @@ import java.util.UUID;
 // Input port for rest or input data to domain
 public interface AccountQueryService {
     Mono<AccountQueryResponse> getAccountById(UUID accountId);
-
 }

@@ -21,6 +21,14 @@ eureka:
 server:
   port: 20262
 spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:16851/db_account_query
+    password: itp@168
+    username: itpusr
   liquibase:
     enabled: true
     driver-class-name: org.postgresql.Driver

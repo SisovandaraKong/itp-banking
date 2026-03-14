@@ -1,13 +1,12 @@
 package co.istad.dara.account_service.domain.interceptor;
 
-import co.istad.dara.account_service.application.dto.client.CustomerResponse;
+import co.istad.dara.account_service.applicationservice.dto.client.CustomerResponse;
 import co.istad.dara.account_service.domain.command.CreateAccountCommand;
 import co.istad.dara.account_service.domain.command.DepositMoneyCommand;
 import co.istad.dara.account_service.domain.command.FreezeAccountCommand;
 import co.istad.dara.account_service.domain.command.WithdrawMoneyCommand;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.commandhandling.CommandMessage;
-import org.axonframework.commandhandling.GenericCommandMessage;
 import org.axonframework.messaging.MessageDispatchInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

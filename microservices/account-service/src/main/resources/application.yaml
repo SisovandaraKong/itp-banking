@@ -40,9 +40,19 @@ spring:
     url: jdbc:postgresql://localhost:16851/db_account
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none
     show-sql: false
     open-in-view: false
+  liquibase:
+    enabled: true
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:16851/db_account
+    user: itpusr
+    password: itp@168
+  r2dbc:
+    url: r2dbc:postgresql://localhost:16851/db_account
+    username: itpusr
+    password: itp@168
   profiles:
     active: dev
   config:
